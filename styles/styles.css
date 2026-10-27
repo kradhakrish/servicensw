@@ -202,8 +202,15 @@ main a.button:any-link {
   white-space: normal;
 }
 
+/* mobile: source buttons keep 16px below them inside their paragraph */
 p.button-wrapper {
-  margin: var(--flow-spacing) 0 16px;
+  margin: var(--flow-spacing) 0 32px;
+}
+
+@media (width >= 768px) {
+  p.button-wrapper {
+    margin-bottom: 16px;
+  }
 }
 
 p.button-wrapper + p.button-wrapper {
