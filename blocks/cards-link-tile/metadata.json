@@ -4,8 +4,15 @@
   "canonicalModel": "standalone",
   "visualCharacteristics": "3-up wrapping grid of text-only white cards with thick navy top border and shadow, title, description, navy arrow",
   "contentPattern": "One row per card, one column: H3 title, description paragraph, link to the target page.",
-  "options": [],
-  "memberVariantIds": ["cards-link-tile"],
+  "options": [
+    {
+      "class": "ghost",
+      "label": "Outlined title-only tiles (related information)"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-link-tile"
+  ],
   "usage": "Text-only link cards pointing to related pages or business stages, typically 3 per grid.",
   "reuseGuidance": "Use when cards have no image. For cards with an image use cards-image-tile."
 }

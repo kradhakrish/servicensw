@@ -1,0 +1,76 @@
+/*
+ * Service NSW brand tokens, extracted from https://www.service.nsw.gov.au
+ * (computed styles at 1440px and 390px; see migration-work/brand.json and
+ * migration-work/design-probe.json).
+ */
+
+:root {
+  /* colors */
+  --background-color: #fff;
+  --text-color: #242934;
+  --link-color: #002664;
+  --link-hover-color: #002664;
+  --light-color: #f4f7f9;
+  --dark-color: #242934;
+  --brand-navy: #002664;
+  --brand-navy-hover: #26477b;
+  --brand-red: #d7153a;
+  --brand-red-hover: #b02831;
+  --brand-blue: #2e5299;
+  --focus-color: #0085b3;
+  --grey-01: #f2f2f2;
+  --notice-info-bg: #eaedf4;
+  --arrow-hover-bg: #e6e9ef;
+
+  /* fonts */
+  --body-font-family: "Public Sans", arial, sans-serif;
+  --heading-font-family: "Public Sans", arial, sans-serif;
+
+  /* body sizes */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+  --body-line-height: 1.5;
+
+  /* heading sizes (mobile) */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 26px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 16px;
+  --heading-line-height: 1.4;
+
+  /* spacing */
+  --content-max-width: 1224px;
+  --content-gutter: 20px;
+  --text-max-width: 768px;
+  --section-spacing: 32px;
+  --flow-spacing: 16px;
+  --header-section-spacing: 24px;
+
+  /* buttons */
+  --button-radius: 6px;
+  --button-padding: 10px 24px;
+  --button-min-width: 200px;
+  --button-transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+
+  /* nav height (boilerplate header is not migrated yet) */
+  --nav-height: 64px;
+}
+
+@media (width >= 768px) {
+  :root {
+    /* heading sizes (desktop) */
+    --heading-font-size-xxl: 36px;
+    --heading-font-size-xl: 28px;
+    --heading-font-size-l: 22px;
+    --heading-font-size-m: 18px;
+
+    /* spacing */
+    --content-gutter: 30px;
+    --section-spacing: 56px;
+    --flow-spacing: 24px;
+    --header-section-spacing: 32px;
+  }
+}

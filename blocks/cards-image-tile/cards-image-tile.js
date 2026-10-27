@@ -65,8 +65,16 @@ export default function decorate(block) {
     if (li.children.length) ul.append(li);
   });
 
+  // only media-bus (same-origin) images can be resized; external URLs keep their query
   ul.querySelectorAll('picture > img').forEach((img) => {
+    if (new URL(img.src, window.location.href).origin !== window.location.origin) return;
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]));
   });
+
+  // source uses a 4-up grid (tile-grid--4x) for sets of 4 or 8 tiles
+  const count = ul.children.length;
+  if (!block.classList.contains('cols-3') && count >= 4 && count % 4 === 0) {
+    block.classList.add('cols-4');
+  }
   block.replaceChildren(ul);
 }

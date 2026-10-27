@@ -29,13 +29,22 @@ export default function decorate(block) {
   const media = document.createElement('div');
   media.className = 'hero-banner-media';
   if (img) {
-    // Hero sits above the fold: load eagerly to protect LCP.
-    media.append(createOptimizedPicture(
-      img.src,
-      img.getAttribute('alt') || '',
-      true,
-      [{ media: '(min-width: 900px)', width: '2000' }, { width: '900' }],
-    ));
+    // Only same-origin (EDS media) images understand ?width=&format=; an
+    // external image keeps its authored URL, which carries its own query string.
+    const sameOrigin = new URL(img.src, window.location.href).origin === window.location.origin;
+    if (sameOrigin) {
+      // Hero sits above the fold: load eagerly to protect LCP.
+      media.append(createOptimizedPicture(
+        img.src,
+        img.getAttribute('alt') || '',
+        true,
+        [{ media: '(min-width: 900px)', width: '2000' }, { width: '900' }],
+      ));
+    } else {
+      img.loading = 'eager';
+      img.fetchPriority = 'high';
+      media.append(img.closest('picture') || img);
+    }
   }
 
   const content = document.createElement('div');

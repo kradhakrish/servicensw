@@ -1,15 +1,10 @@
-.columns-text-media > div {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* columns stack in authored order on mobile, as on the source */
+.columns-text-media > div > div > :first-child {
+  margin-top: 0;
 }
 
-.columns-text-media .columns-text-media-img-col {
-  order: 0;
-}
-
-.columns-text-media .columns-text-media-text-col {
-  order: 1;
+.columns-text-media > div > div > :last-child {
+  margin-bottom: 0;
 }
 
 .columns-text-media .columns-text-media-img-col img {
@@ -18,26 +13,54 @@
   height: auto;
 }
 
-.columns-text-media .columns-text-media-text-col a img {
-  display: inline-block;
-  width: auto;
-  max-height: 48px;
-}
-
+/* app store badges sit side by side */
 .columns-text-media .columns-text-media-text-col p:has(> a > picture) {
   display: inline-block;
-  margin-right: 16px;
+  max-width: calc(50% - 6px);
+  margin: 0 12px 12px 0;
+  vertical-align: top;
+}
+
+.columns-text-media .columns-text-media-text-col p:has(> a > picture) + p:has(> a > picture) {
+  margin-right: 0;
+}
+
+.columns-text-media .columns-text-media-text-col a:has(> picture) {
+  display: block;
+}
+
+.columns-text-media .columns-text-media-text-col a img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* stacked buttons on mobile: 40px apart, 16px below the last, as on the source */
+.columns-text-media .columns-text-media-text-col p.button-wrapper + p.button-wrapper {
+  margin: 40px 0 16px;
+}
+
+/* side-by-side buttons share one line, so neither keeps a top margin */
+@media (width >= 768px) {
+  .columns-text-media .columns-text-media-text-col p.button-wrapper:has(+ p.button-wrapper) {
+    margin-top: 0;
+  }
+
+  .columns-text-media .columns-text-media-text-col p.button-wrapper + p.button-wrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 @media (width >= 900px) {
   .columns-text-media > div {
-    flex-direction: row;
-    align-items: center;
-    gap: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
   }
 
-  .columns-text-media > div > div {
-    flex: 1;
-    order: unset;
+  .columns-text-media .columns-text-media-text-col p:has(> a > picture) {
+    max-width: none;
   }
 }

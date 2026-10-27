@@ -23,8 +23,8 @@ function linkCard(body) {
   } else {
     primary.classList.add('cards-link-tile-link');
     primary.classList.remove('button', 'primary', 'secondary', 'accent');
-    const wrapper = primary.closest('.button-wrapper');
-    if (wrapper) wrapper.classList.remove('button-wrapper');
+    const wrapper = primary.closest('.button-container');
+    if (wrapper) wrapper.classList.remove('button-container');
   }
 
   const arrow = document.createElement('span');

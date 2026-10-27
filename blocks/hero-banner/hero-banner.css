@@ -1,20 +1,38 @@
-.hero-banner-container .hero-banner-wrapper {
-  max-width: unset;
+/*
+ * hero-banner: full-width photo with title overlay
+ * (source header.page-hero, see migration-work/hero-banner-extracted.css).
+ */
+
+/* the photo runs edge to edge, so lift the section's content width and gutter */
+main > .section > .hero-banner-wrapper {
+  max-width: none;
   padding: 0;
 }
 
+/*
+ * Height comes from an aspect-ratio spacer (source .page-hero::before).
+ * The spacer and the title share one grid cell, so a title taller than the
+ * photo grows the banner instead of spilling over the header.
+ */
 .hero-banner {
+  --hero-banner-ratio: 1.111 / 1;
+
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 160px;
-  overflow: hidden;
+  display: grid;
+}
+
+.hero-banner::before {
+  content: '';
+  display: block;
+  grid-area: 1 / 1;
+  aspect-ratio: var(--hero-banner-ratio);
 }
 
 .hero-banner .hero-banner-media {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .hero-banner .hero-banner-media picture {
@@ -28,32 +46,39 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 33.333%;
 }
 
-/* left-side overlay keeps the text legible over the photo */
+/* source .page-hero__hero::after */
 .hero-banner .hero-banner-media::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 0%) 70%);
+  z-index: 2;
+  background: linear-gradient(270deg, rgb(245 246 252 / 0%), rgb(0 0 0 / 75%));
 }
 
+/* source .page-hero .container + .page-hero__title (inset by the container padding) */
 .hero-banner .hero-banner-content {
   position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px 24px;
+  z-index: 3;
+  grid-area: 1 / 1;
+  align-self: end;
   box-sizing: border-box;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--content-gutter);
 }
 
-.hero-banner .hero-banner-text {
-  max-width: 720px;
+.hero-banner .hero-banner-text h1 {
+  margin: 0;
 }
 
-.hero-banner:not(.no-image) .hero-banner-text {
-  color: var(--background-color);
+.hero-banner .hero-banner-text p {
+  margin-top: 0;
+  font-size: 18px;
+  line-height: 27px;
 }
 
 .hero-banner .hero-banner-text > :first-child {
@@ -64,20 +89,34 @@
   margin-bottom: 0;
 }
 
-.hero-banner.no-image {
-  min-height: 0;
+.hero-banner:not(.no-image) .hero-banner-text,
+.hero-banner:not(.no-image) .hero-banner-text h1 {
+  color: #fff;
 }
 
-.hero-banner.no-text {
-  aspect-ratio: 4 / 1;
+/* no photo: plain title band, no spacer */
+.hero-banner.no-image::before {
+  display: none;
 }
 
-@media (width >= 900px) {
+@media (width >= 480px) {
   .hero-banner {
-    min-height: 210px;
+    --hero-banner-ratio: 4 / 1;
   }
 
-  .hero-banner .hero-banner-content {
-    padding: 40px 32px;
+  .hero-banner .hero-banner-media img {
+    object-position: 50% 25%;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero-banner {
+    --hero-banner-ratio: 5 / 1;
+  }
+}
+
+@media (width >= 1224px) {
+  .hero-banner {
+    --hero-banner-ratio: 6 / 1;
   }
 }

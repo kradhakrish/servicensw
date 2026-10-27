@@ -182,7 +182,8 @@ var CustomImportScript = (() => {
       }
       cells.push([contentCell]);
     });
-    const block = WebImporter.Blocks.createBlock(document, { name: "cards-link-tile", cells });
+    const variants = element.querySelector("a.tile--ghost-box") ? ["ghost"] : [];
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-link-tile", variants, cells });
     element.replaceWith(block);
   }
 
