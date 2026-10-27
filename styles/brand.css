@@ -55,8 +55,8 @@
   --button-min-width: 200px;
   --button-transition: border-color 0.5s, background-color 0.5s, color 0.5s;
 
-  /* header height: 48px utility bar + 79px main bar */
-  --nav-height: 127px;
+  /* header height: 65px mobile bar; desktop 48px utility bar + 79px main bar */
+  --nav-height: 65px;
 }
 
 @media (width >= 768px) {
@@ -72,5 +72,11 @@
     --section-spacing: 56px;
     --flow-spacing: 24px;
     --header-section-spacing: 32px;
+  }
+}
+
+@media (width >= 1024px) {
+  :root {
+    --nav-height: 127px;
   }
 }

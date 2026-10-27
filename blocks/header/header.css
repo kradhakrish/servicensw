@@ -1,21 +1,26 @@
-/* Service NSW global header — values measured from www.service.nsw.gov.au (1440px) */
+/*
+ * Service NSW global header — values measured from www.service.nsw.gov.au
+ * (375px and 1440px). Mobile-first: the source switches to the desktop header at 1024px.
+ */
 
 header .header {
   font-family: var(--body-font-family);
 }
 
 header .nav-wrapper {
+  position: relative;
   background-color: #fff;
 }
 
 header .nav-container {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   max-width: var(--content-max-width);
   height: 100%;
   margin: 0 auto;
-  padding: 0 var(--content-gutter);
+  padding: 0 16px;
 }
 
 header .nav-visually-hidden {
@@ -32,7 +37,7 @@ header .nav-skip-link:any-link {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 300;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -58,131 +63,18 @@ header .nav-icon {
   mask: var(--nav-icon) center / contain no-repeat;
 }
 
-/* utility bar */
-header .nav-utility {
-  height: 48px;
-  background-color: var(--text-color);
-  color: #fff;
-}
-
-header .nav-utility .nav-container {
-  justify-content: flex-end;
-  gap: 9px;
-}
-
-header .nav-dropdown {
-  position: relative;
-  height: 100%;
-}
-
-header .nav-dropdown-toggle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 100%;
-  margin: 0;
-  border: 1px solid transparent;
-  border-radius: 0;
-  padding: 0 34px 0 16px;
-  background-color: var(--text-color);
-  color: #fff;
-  font-family: var(--body-font-family);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  cursor: pointer;
-}
-
-header .nav-dropdown-toggle[aria-expanded="true"] {
-  background-color: #fff;
-  color: var(--text-color);
-}
-
-header .nav-dropdown-toggle .nav-icon-chevron {
-  position: absolute;
-  right: 12px;
-  width: 12px;
-  height: 8px;
-  transition: transform 0.5s ease-in-out;
-}
-
-header .nav-dropdown-toggle[aria-expanded="true"] .nav-icon-chevron {
-  transform: rotate(180deg);
-}
-
-header .nav-dropdown-panel {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 10;
-  display: none;
-  box-sizing: border-box;
-  width: 250px;
-  max-height: 400px;
-  margin: 0;
-  padding: 0;
-  overflow-y: scroll;
-  list-style: none;
-  background-color: #fff;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
-}
-
-header .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-panel {
-  display: block;
-}
-
-header .nav-dropdown-panel li {
-  margin: 0;
-}
-
-header .nav-utility-link:any-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 100%;
-  padding: 0 16px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-decoration: none;
-}
-
-/* the last link's padding hangs past the container edge, as on the source */
-header .nav-account {
-  height: 100%;
-  margin-right: -16px;
-}
-
-header .nav-account ul {
-  display: flex;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-header .nav-account li {
-  margin: 0;
-}
-
-header .nav-utility-link:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-header .nav-utility-link .nav-icon {
-  width: 16px;
-  height: 16px;
-}
-
-/* main bar */
+/* ---------- main bar (mobile: 65px, Menu | logo | Search) ---------- */
 header .nav-main {
+  position: relative;
+  z-index: 200;
   box-sizing: border-box;
-  height: 79px;
+  height: 65px;
   border-bottom: 1px solid #ecf1f3;
   background-color: #fff;
+}
+
+header .nav-main .nav-container {
+  justify-content: center;
 }
 
 header .nav-brand a:any-link {
@@ -194,56 +86,69 @@ header .nav-brand a:any-link {
 header .nav-brand img {
   display: block;
   width: auto;
-  height: 49px;
+  height: 32px;
 }
 
 header .nav-brand .nav-brand-divider + img {
-  height: 42px;
+  height: 26px;
 }
 
 header .nav-brand-divider {
   display: block;
   width: 1px;
-  height: 46px;
+  height: 29px;
   margin: 0 13px;
   background-color: #dee3e5;
 }
 
-header .nav-sections {
-  display: flex;
-  gap: 32px;
-  margin: 0 0 0 32px;
-  padding: 0;
-  list-style: none;
-}
-
-header .nav-sections li {
+/* mobile bar buttons: icon above a small label */
+header .nav-menu-button,
+header .nav-search-button {
+  position: absolute;
+  top: 10px;
+  width: 44px;
+  height: 44px;
   margin: 0;
-}
-
-header .nav-sections a:any-link {
-  display: block;
+  border: 0;
+  border-radius: 0;
+  padding: 20px 0 0;
+  background: none;
   color: var(--text-color);
-  font-size: 16px;
-  font-weight: 500;
+  font-family: var(--body-font-family);
+  font-size: 10px;
+  font-weight: 400;
   line-height: 24px;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-header .nav-sections a:hover {
-  color: var(--text-color);
-  text-decoration: none;
+header .nav-menu-button {
+  left: 11px;
 }
 
-header .nav-sections a[aria-current="page"] {
-  font-weight: 700;
+header .nav-search-button {
+  right: 16px;
 }
 
+header .nav-menu-button::before,
+header .nav-search-button::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 14px;
+  width: 16px;
+  height: 20px;
+  background: url("/icons/menu.svg") center / 16px 12px no-repeat;
+}
+
+header .nav-search-button::before {
+  background-image: url("/icons/search-dark.svg");
+  background-size: 16px 17px;
+}
+
+/* ---------- search form (desktop bar + mobile panel) ---------- */
 header .nav-search {
   display: flex;
-  width: 340px;
   height: 48px;
-  margin: 0 0 0 auto;
 }
 
 header .nav-search input {
@@ -273,7 +178,7 @@ header .nav-search input:focus-visible {
   outline-offset: 0;
 }
 
-header .nav-search button {
+header .nav-search [type="submit"] {
   display: flex;
   flex: none;
   align-items: center;
@@ -290,17 +195,286 @@ header .nav-search button {
   transition: var(--button-transition);
 }
 
-header .nav-search button:hover {
+header .nav-search [type="submit"]:hover {
   border-color: transparent;
   background-color: #dd3858;
 }
 
-header .nav-search button .nav-icon {
+header .nav-search [type="submit"] .nav-icon {
   width: 22px;
   height: 22px;
 }
 
-/* language list items (after other header buttons for specificity order) */
+/* desktop-only parts of the main bar */
+header .nav-sections-wrapper,
+header .nav-main .nav-search {
+  display: none;
+}
+
+/* ---------- utility bar (desktop only) ---------- */
+header .nav-utility {
+  display: none;
+  height: 48px;
+  background-color: var(--text-color);
+  color: #fff;
+}
+
+header .nav-utility .nav-container {
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 0 var(--content-gutter);
+}
+
+header .nav-dropdown {
+  position: relative;
+}
+
+header .nav-dropdown-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+header .nav-dropdown-toggle .nav-icon-chevron {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  transition: transform 0.5s ease-in-out;
+}
+
+header .nav-dropdown-toggle[aria-expanded="true"] .nav-icon-chevron {
+  transform: rotate(180deg);
+}
+
+header .nav-dropdown-panel {
+  display: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+}
+
+header .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-panel {
+  display: block;
+}
+
+header .nav-dropdown-panel li {
+  margin: 0;
+}
+
+header .nav-utility .nav-dropdown {
+  height: 100%;
+}
+
+header .nav-utility .nav-dropdown-toggle {
+  height: 100%;
+  padding: 0 34px 0 16px;
+  background-color: var(--text-color);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+header .nav-utility .nav-dropdown-toggle[aria-expanded="true"] {
+  background-color: #fff;
+  color: var(--text-color);
+}
+
+header .nav-utility .nav-dropdown-toggle .nav-icon-chevron {
+  right: 12px;
+}
+
+header .nav-utility .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
+  width: 250px;
+  max-height: 400px;
+  overflow-y: scroll;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
+}
+
+header .nav-utility-link:any-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+header .nav-utility-link:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+header .nav-utility-link:any-link .nav-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* the last link's padding hangs past the container edge, as on the source */
+header .nav-account {
+  height: 100%;
+  margin-right: -16px;
+}
+
+header .nav-account ul {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header .nav-account li {
+  margin: 0;
+}
+
+header .nav-account .nav-utility-link:any-link {
+  height: 100%;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ---------- main nav links ---------- */
+header .nav-sections {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header .nav-sections li {
+  margin: 0;
+}
+
+header .nav-sections a:any-link {
+  display: block;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+header .nav-sections a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+header .nav-sections a[aria-current="page"] {
+  font-weight: 700;
+}
+
+/* ---------- mobile drawer ---------- */
+header .nav-drawer {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  z-index: 199;
+  box-sizing: border-box;
+  width: 280px;
+  height: calc(100dvh - 65px);
+  padding: 64px 10px 64px 20px;
+  overflow-y: auto;
+  background-color: #fff;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease-in-out, visibility 0s linear 0.25s;
+}
+
+header .nav-wrapper.is-menu-open .nav-drawer {
+  visibility: visible;
+  transform: none;
+  transition: transform 0.25s ease-in-out;
+}
+
+header .nav-drawer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: url("/icons/close.svg") center / 15px 15px no-repeat;
+  cursor: pointer;
+}
+
+header .nav-drawer .nav-sections li {
+  margin-bottom: 16px;
+}
+
+header .nav-drawer .nav-utility-link:any-link {
+  display: inline-flex;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+header .nav-drawer .nav-dropdown-toggle {
+  height: 24px;
+  padding: 0 17px 0 0;
+  background-color: #fff;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+header .nav-drawer .nav-dropdown-toggle .nav-icon-chevron {
+  right: 0;
+}
+
+header .nav-drawer .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-panel {
+  margin-top: 16px;
+}
+
+/* ---------- mobile search panel + overlay ---------- */
+header .nav-search-panel {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  left: 10px;
+  z-index: 199;
+  display: none;
+  padding: 10px;
+}
+
+header .nav-wrapper.is-search-open .nav-search-panel {
+  display: block;
+}
+
+header .nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 198;
+  background-color: var(--text-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease-in-out, visibility 0s linear 0.25s;
+}
+
+header .nav-wrapper.is-menu-open .nav-overlay,
+header .nav-wrapper.is-search-open .nav-overlay {
+  opacity: 0.8;
+  visibility: visible;
+  transition: opacity 0.25s ease-in-out;
+}
+
+/* language list items */
 header .nav-dropdown-panel [role="menuitem"] {
   display: block;
   width: 100%;
@@ -322,4 +496,58 @@ header .nav-dropdown-panel [role="menuitem"]:hover {
   background-color: var(--light-color);
   color: var(--text-color);
   text-decoration: none;
+}
+
+/* ---------- desktop ---------- */
+
+/* breakpoint-exception: the source header switches to its desktop layout at 1024px */
+@media (width >= 1024px) {
+  header .nav-utility {
+    display: block;
+  }
+
+  header .nav-main {
+    height: 79px;
+  }
+
+  header .nav-main .nav-container {
+    justify-content: flex-start;
+    padding: 0 var(--content-gutter);
+  }
+
+  header .nav-menu-button,
+  header .nav-search-button,
+  header .nav-drawer,
+  header .nav-search-panel,
+  header .nav-overlay {
+    display: none;
+  }
+
+  header .nav-brand img {
+    height: 49px;
+  }
+
+  header .nav-brand .nav-brand-divider + img {
+    height: 42px;
+  }
+
+  header .nav-brand-divider {
+    height: 46px;
+  }
+
+  header .nav-sections-wrapper {
+    display: block;
+    margin-left: 32px;
+  }
+
+  header .nav-sections-wrapper .nav-sections {
+    display: flex;
+    gap: 32px;
+  }
+
+  header .nav-main .nav-search {
+    display: flex;
+    width: 340px;
+    margin-left: auto;
+  }
 }
