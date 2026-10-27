@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.service.nsw.gov.au/services/recreational-fishing",
+  "path": "services/recreational-fishing",
+  "timestamp": "2026-10-27T03:38:38.441Z",
+  "title": "Recreational fishing | Service NSW",
+  "template": "services",
+  "blocks": [
+    "cards-link-tile",
+    "cards-link-tile"
+  ]
+}

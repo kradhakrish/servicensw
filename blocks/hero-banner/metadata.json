@@ -1,0 +1,20 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Short full-width photo banner (~210px tall at 1280 wide, 4:1 crop) with dark left-side overlay; white H1 and white subtitle left-aligned at the bottom of the container width",
+  "contentPattern": "Background photo row, then H1 + subtitle paragraph row",
+  "options": [],
+  "memberVariantIds": [
+    "hero-banner"
+  ],
+  "usage": {
+    "description": "Page-title banner at the top of service and program pages: a background photo behind the page H1 and a one-line summary.",
+    "pagesUsing": [
+      "/active-and-creative-kids-voucher"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-27"
+  },
+  "reuseGuidance": "Use as the first block on a page with a photo banner behind the page title. Either row may be omitted: without an image it renders as a plain title area; without text it renders as a 4:1 photo strip."
+}

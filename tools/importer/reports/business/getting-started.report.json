@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.service.nsw.gov.au/business/getting-started",
+  "path": "business/getting-started",
+  "timestamp": "2026-10-27T03:35:20.967Z",
+  "title": "Starting a business | Service NSW",
+  "template": "services",
+  "blocks": [
+    "cards-image-tile",
+    "cards-image-tile",
+    "cards-image-tile",
+    "cards-link-tile",
+    "cards-link-tile",
+    "embed-video",
+    "accordion-transcript",
+    "accordion-transcript"
+  ]
+}

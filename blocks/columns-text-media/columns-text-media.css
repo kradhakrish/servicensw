@@ -1,0 +1,43 @@
+.columns-text-media > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-text-media .columns-text-media-img-col {
+  order: 0;
+}
+
+.columns-text-media .columns-text-media-text-col {
+  order: 1;
+}
+
+.columns-text-media .columns-text-media-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.columns-text-media .columns-text-media-text-col a img {
+  display: inline-block;
+  width: auto;
+  max-height: 48px;
+}
+
+.columns-text-media .columns-text-media-text-col p:has(> a > picture) {
+  display: inline-block;
+  margin-right: 16px;
+}
+
+@media (width >= 900px) {
+  .columns-text-media > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-text-media > div > div {
+    flex: 1;
+    order: unset;
+  }
+}

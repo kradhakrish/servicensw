@@ -1,0 +1,44 @@
+.accordion-transcript details {
+  border-bottom: 1px solid #dadada;
+}
+
+.accordion-transcript details summary {
+  position: relative;
+  padding: 12px 32px 12px 0;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-transcript details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-transcript details summary > :first-child {
+  margin: 0;
+}
+
+.accordion-transcript details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border: solid currentcolor;
+  border-width: 2px 2px 0 0;
+  transform: translateY(-75%) rotate(135deg);
+  transition: transform 0.2s;
+}
+
+.accordion-transcript details[open] summary::after {
+  transform: translateY(-25%) rotate(-45deg);
+}
+
+.accordion-transcript details .accordion-transcript-item-body {
+  padding: 0 0 16px;
+}
+
+.accordion-transcript details .accordion-transcript-item-body p {
+  margin: 0 0 0.8em;
+}

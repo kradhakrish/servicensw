@@ -1,0 +1,57 @@
+/* structural styles only; visual design is applied in the design pass */
+.table {
+  width: 100%;
+}
+
+.table .table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+}
+
+.table th,
+.table td {
+  border: 1px solid;
+  padding: 0.5em 0.75em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-weight: 700;
+}
+
+.table th p,
+.table td p {
+  margin: 0;
+}
+
+.table td ul,
+.table td ol {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.table td p + p,
+.table td p + ul,
+.table td ul + p {
+  margin-top: 0.25em;
+}
+
+/* keep columns readable on narrow screens; the wrapper scrolls */
+@media (width < 600px) {
+  .table table {
+    min-width: 480px;
+  }
+}
+
+/* striped option */
+.table.striped tbody tr:nth-child(odd) {
+  background-color: var(--light-color, #f5f5f5);
+}

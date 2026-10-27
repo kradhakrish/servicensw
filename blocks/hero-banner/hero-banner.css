@@ -1,0 +1,83 @@
+.hero-banner-container .hero-banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 160px;
+  overflow: hidden;
+}
+
+.hero-banner .hero-banner-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-banner .hero-banner-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-banner .hero-banner-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* left-side overlay keeps the text legible over the photo */
+.hero-banner .hero-banner-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 0%) 70%);
+}
+
+.hero-banner .hero-banner-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+.hero-banner .hero-banner-text {
+  max-width: 720px;
+}
+
+.hero-banner:not(.no-image) .hero-banner-text {
+  color: var(--background-color);
+}
+
+.hero-banner .hero-banner-text > :first-child {
+  margin-top: 0;
+}
+
+.hero-banner .hero-banner-text > :last-child {
+  margin-bottom: 0;
+}
+
+.hero-banner.no-image {
+  min-height: 0;
+}
+
+.hero-banner.no-text {
+  aspect-ratio: 4 / 1;
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    min-height: 210px;
+  }
+
+  .hero-banner .hero-banner-content {
+    padding: 40px 32px;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-image-tile",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "3-up wrapping grid, white card with shadow, image on top with navy bottom rule, eyebrow, bold title, description, navy arrow at bottom; whole card is one link",
+  "contentPattern": "One row per card. Column 1: card image. Column 2: optional eyebrow paragraph, H3 title, description paragraph, link to the detail page.",
+  "options": [],
+  "memberVariantIds": [
+    "cards-image-tile"
+  ],
+  "usage": {
+    "description": "Grids of image cards that each link to a detail page, such as business support services or programs (3 or 6 cards per grid).",
+    "pagesUsing": [
+      "/active-and-creative-kids-voucher"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-27"
+  },
+  "reuseGuidance": "Use when every card has an image and leads to its own page. For text-only link cards use cards-link-tile."
+}

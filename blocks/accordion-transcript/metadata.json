@@ -1,0 +1,11 @@
+{
+  "variantName": "accordion-transcript",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Single collapsed item directly under a video, bold label with chevron, bottom border only, no box",
+  "contentPattern": "One row per item. Column 1: item label (e.g. 'Transcript'). Column 2: transcript paragraphs.",
+  "options": [],
+  "memberVariantIds": ["accordion-transcript"],
+  "usage": "Collapsible transcript placed directly after an embed-video block.",
+  "reuseGuidance": "Use for video transcripts or similar single expandable text panels. For FAQ-style boxed accordions use the standard accordion."
+}

@@ -1,0 +1,11 @@
+{
+  "variantName": "embed-video",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "16:9 Vimeo player in the right half of a split section",
+  "contentPattern": "One row, one cell: optional poster image above a Vimeo or YouTube link (e.g. https://vimeo.com/935746990/72b444d313). Unlisted Vimeo links keep their privacy hash.",
+  "options": [],
+  "memberVariantIds": ["embed-video"],
+  "usage": "A single video player, usually beside introductory text in a split section and followed by an accordion-transcript block.",
+  "reuseGuidance": "Use for Vimeo or YouTube videos. Put the transcript in an accordion-transcript block directly after it."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.service.nsw.gov.au/services/savings-finder",
+  "path": "services/savings-finder",
+  "timestamp": "2026-10-27T03:38:44.979Z",
+  "title": "Savings Finder – use the Service NSW search tool to find savings | Service NSW",
+  "template": "services",
+  "blocks": [
+    "cards-image-tile"
+  ]
+}
