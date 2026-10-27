@@ -340,6 +340,24 @@ var CustomImportScript = (() => {
         p.append(btn);
         cta.replaceChildren(p);
       });
+      const isButton = (a) => a.matches("a.button--primary, a.button--secondary");
+      element.querySelectorAll("p").forEach((p) => {
+        const links = [...p.querySelectorAll("a")];
+        if (links.length < 2 || !links.every(isButton)) return;
+        if (p.textContent.replace(/\s+/g, "") !== links.map((a) => a.textContent.replace(/\s+/g, "")).join("")) return;
+        links.forEach((a) => {
+          const np = document.createElement("p");
+          np.append(a);
+          p.before(np);
+        });
+        p.remove();
+      });
+      element.querySelectorAll("a.button--primary, a.button--secondary").forEach((a) => {
+        if (a.closest("strong, em")) return;
+        const wrap = document.createElement(a.classList.contains("button--primary") ? "strong" : "em");
+        a.replaceWith(wrap);
+        wrap.append(a);
+      });
       element.querySelectorAll("iframe").forEach((iframe) => {
         const src = iframe.getAttribute("src") || "";
         if (iframe.classList.contains("media-oembed-content") || /vimeo\.com|youtube\.com|youtu\.be|\/media\/oembed/i.test(src)) return;

@@ -60,6 +60,28 @@ export default function transform(hookName, element, payload) {
       cta.replaceChildren(p);
     });
 
+    // Buttons: EDS buttonizes a link that is alone in its paragraph and wrapped in
+    // <strong> (primary) or <em> (secondary). Split paragraphs holding several
+    // buttons, then wrap each button link in the matching formatting.
+    const isButton = (a) => a.matches('a.button--primary, a.button--secondary');
+    element.querySelectorAll('p').forEach((p) => {
+      const links = [...p.querySelectorAll('a')];
+      if (links.length < 2 || !links.every(isButton)) return;
+      if (p.textContent.replace(/\s+/g, '') !== links.map((a) => a.textContent.replace(/\s+/g, '')).join('')) return;
+      links.forEach((a) => {
+        const np = document.createElement('p');
+        np.append(a);
+        p.before(np);
+      });
+      p.remove();
+    });
+    element.querySelectorAll('a.button--primary, a.button--secondary').forEach((a) => {
+      if (a.closest('strong, em')) return;
+      const wrap = document.createElement(a.classList.contains('button--primary') ? 'strong' : 'em');
+      a.replaceWith(wrap);
+      wrap.append(a);
+    });
+
     // Tracking / third-party iframes (keep oEmbed video iframes for parsers).
     element.querySelectorAll('iframe').forEach((iframe) => {
       const src = iframe.getAttribute('src') || '';
