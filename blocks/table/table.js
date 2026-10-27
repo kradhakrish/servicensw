@@ -41,14 +41,18 @@ export default function decorate(block) {
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
 
+  // column labels used by the stacked (one column) mobile layout
+  const labels = header ? [...rows[0].children].map((cell) => cell.textContent.trim()) : [];
+
   rows.forEach((row, i) => {
     const isHeader = header && i === 0;
     const tr = document.createElement('tr');
     const cells = [...row.children];
 
-    cells.forEach((cell) => {
+    cells.forEach((cell, col) => {
       const el = buildCell(cell, isHeader ? 'th' : 'td');
       if (isHeader) el.setAttribute('scope', 'col');
+      else if (labels[col]) el.dataset.label = labels[col];
       tr.append(el);
     });
 

@@ -2,7 +2,7 @@
   "variantName": "table",
   "baseBlock": "table",
   "canonicalModel": "table",
-  "visualCharacteristics": "Full-width data table with a bold header row, bordered cells, left-aligned text; horizontally scrollable on mobile.",
+  "visualCharacteristics": "Data table up to 768px wide with a grey bold header row, 2px row dividers and left-aligned text; optional white/grey striped rows. Below 480px each row stacks into one column with the header text as a bold label above each value.",
   "contentPattern": "Each block row is a table row and each cell a table cell. The first row is the header row (rendered as th in thead) unless the no-header option is set. Cells may hold inline formatting, links and short lists. Rows with fewer cells stretch their last cell across the remaining columns.",
   "options": [
     { "class": "no-header", "label": "No header row" },
