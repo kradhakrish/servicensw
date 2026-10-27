@@ -55,8 +55,8 @@
   --button-min-width: 200px;
   --button-transition: border-color 0.5s, background-color 0.5s, color 0.5s;
 
-  /* nav height (boilerplate header is not migrated yet) */
-  --nav-height: 64px;
+  /* header height: 48px utility bar + 79px main bar */
+  --nav-height: 127px;
 }
 
 @media (width >= 768px) {

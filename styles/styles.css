@@ -30,6 +30,7 @@ body.appear {
 
 header {
   height: var(--nav-height);
+  background-color: var(--background-color);
 }
 
 header .header,
