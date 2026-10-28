@@ -1,3 +1,28 @@
+// desktop layout from 1024px, as on the source site
+const isDesktop = window.matchMedia('(width >= 1024px)');
+
+/**
+ * Normalises a path for comparison (drops the local /content prefix and trailing slash).
+ * @param {string} path pathname
+ * @returns {string}
+ */
+function normalisePath(path) {
+  return path.replace(/^\/content(?=\/|$)/, '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+}
+
+/**
+ * Marks the link to the current page (matched by path, as the source site links absolutely).
+ * @param {Element} list link list
+ */
+function markCurrent(list) {
+  const current = normalisePath(window.location.pathname);
+  list.querySelectorAll('a[href]').forEach((a) => {
+    const url = new URL(a.href, window.location.href);
+    if (!url.protocol.startsWith('http')) return;
+    if (normalisePath(url.pathname) === current) a.setAttribute('aria-current', 'page');
+  });
+}
+
 /**
  * Fetches the footer fragment. Metadata-independent: /content first (local preview),
  * then the site root (DA / EDS).
@@ -52,7 +77,23 @@ function band(className, nodes) {
 }
 
 /**
- * Icon links (image + text) keep the text for screen readers only.
+ * Creates a labelled nav landmark.
+ * @param {string} className nav class
+ * @param {string} label accessible name
+ * @param {Node[]} nodes content
+ * @returns {Element} nav
+ */
+function labelledNav(className, label, nodes) {
+  const nav = document.createElement('nav');
+  nav.className = className;
+  nav.setAttribute('aria-label', label);
+  nav.append(...nodes);
+  return nav;
+}
+
+/**
+ * Icon links (image + text): the image becomes a CSS-painted icon (as on the source) and the
+ * text stays for screen readers only.
  * @param {Element} list list of icon links
  */
 function decorateIconLinks(list) {
@@ -60,12 +101,14 @@ function decorateIconLinks(list) {
     const img = a.querySelector('img');
     if (!img) return;
     const label = a.textContent.trim();
+    const icon = document.createElement('span');
+    icon.className = 'footer-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.style.setProperty('--footer-icon', `url("${img.src}")`);
     const text = document.createElement('span');
     text.className = 'footer-visually-hidden';
     text.textContent = label;
-    img.alt = '';
-    img.loading = 'lazy';
-    a.replaceChildren(img, text);
+    a.replaceChildren(icon, text);
   });
 }
 
@@ -114,26 +157,36 @@ export default async function decorate(block) {
 
   if (ack) bands.push(band('footer-ack', [...ack.childNodes]));
   if (links) {
-    const parts = [buildColumns(links)];
-    if (mobile) {
-      const list = mobile.querySelector('ul');
-      if (list) {
-        list.className = 'footer-mobile-links';
-        parts.push(list);
-      }
+    const columns = buildColumns(links);
+    const primary = labelledNav('footer-primary', 'Global footer primary menu', [columns]);
+    const mobileList = mobile && mobile.querySelector('ul');
+    if (mobileList) {
+      mobileList.className = 'footer-mobile-links';
+      markCurrent(mobileList);
+      primary.append(mobileList);
     }
-    bands.push(band('footer-main', parts));
+    bands.push(band('footer-main', [primary]));
+
+    // social icons sit under the last column on desktop and under the mobile list otherwise
+    const social = columns.querySelector('.footer-social');
+    const lastColumn = columns.querySelector('.footer-column:last-of-type');
+    if (social && lastColumn && mobileList) {
+      const placeSocial = () => {
+        if (isDesktop.matches) lastColumn.append(social);
+        else mobileList.after(social);
+      };
+      placeSocial();
+      isDesktop.addEventListener('change', placeSocial);
+    }
   }
   if (legal) {
     const list = legal.querySelector('ul');
-    if (list) list.className = 'footer-legal';
-    bands.push(band('footer-bottom', [...legal.childNodes]));
+    if (list) {
+      list.className = 'footer-legal';
+      bands.push(band('footer-bottom', [labelledNav('footer-secondary', 'Global footer secondary menu', [list])]));
+    }
   }
 
   block.textContent = '';
-  const nav = document.createElement('nav');
-  nav.className = 'footer-wrapper-nav';
-  nav.setAttribute('aria-label', 'Global footer');
-  nav.append(...bands);
-  block.append(nav);
+  block.append(...bands);
 }
