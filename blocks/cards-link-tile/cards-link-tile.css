@@ -1,0 +1,150 @@
+/*
+ * cards-link-tile: Service NSW `.tile-grid` of `a.tile.tile--menu-box` tiles.
+ * Values from source computed styles (migration-work/cards-link-tile-extracted.css).
+ * Source breakpoints: 480px (2-up, 24px gap) and 1024px (3-up / 4-up).
+ */
+
+.cards-link-tile {
+  --cards-link-tile-min-height: 120px;
+}
+
+.cards-link-tile.ghost {
+  --cards-link-tile-min-height: 85px;
+}
+
+.cards-link-tile > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.cards-link-tile > ul > li {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  min-height: var(--cards-link-tile-min-height);
+  padding: 28px 24px 56px;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--background-color);
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 15%);
+  color: var(--text-color);
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+/* navy top bar */
+.cards-link-tile > ul > li::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background-color: var(--brand-navy);
+  transition: background 0.15s ease-in-out;
+}
+
+.cards-link-tile > ul > li:hover {
+  background-color: var(--brand-navy);
+  color: #fff;
+}
+
+.cards-link-tile > ul > li:has(.cards-link-tile-link:focus-visible) {
+  outline: 3px solid var(--focus-color);
+  outline-offset: -1px;
+}
+
+.cards-link-tile .cards-link-tile-card-body h1,
+.cards-link-tile .cards-link-tile-card-body h2,
+.cards-link-tile .cards-link-tile-card-body h3,
+.cards-link-tile .cards-link-tile-card-body h4,
+.cards-link-tile .cards-link-tile-card-body h5,
+.cards-link-tile .cards-link-tile-card-body h6 {
+  margin: 0;
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  line-height: var(--heading-line-height);
+  color: inherit;
+}
+
+.cards-link-tile .cards-link-tile-card-body p {
+  margin: 8px 0 0;
+  font-size: var(--body-font-size-m);
+  line-height: var(--body-line-height);
+  color: inherit;
+}
+
+.cards-link-tile .cards-link-tile-card-body p:first-child {
+  margin-top: 0;
+}
+
+.cards-link-tile .cards-link-tile-link:any-link,
+.cards-link-tile .cards-link-tile-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* whole tile is the click target */
+.cards-link-tile .cards-link-tile-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cards-link-tile .cards-link-tile-link:focus-visible {
+  outline: none;
+}
+
+/* arrow icon */
+.cards-link-tile .cards-link-tile-arrow {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: block;
+  width: 19px;
+  height: 14px;
+  background-color: var(--brand-navy);
+  mask: url("data:image/svg+xml,%3Csvg width='19' height='14' viewBox='0 0 19 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.033 1.61l4.084 4.027H0v2.301h14.117l-4.084 4.027 1.634 1.61 7-6.787-7-6.788z'/%3E%3C/svg%3E") 50% center no-repeat;
+}
+
+.cards-link-tile > ul > li:hover .cards-link-tile-arrow {
+  background-color: #fff;
+}
+
+/* ghost: title-only "Related information" tiles */
+.cards-link-tile.ghost .cards-link-tile-card-body h1,
+.cards-link-tile.ghost .cards-link-tile-card-body h2,
+.cards-link-tile.ghost .cards-link-tile-card-body h3,
+.cards-link-tile.ghost .cards-link-tile-card-body h4,
+.cards-link-tile.ghost .cards-link-tile-card-body h5,
+.cards-link-tile.ghost .cards-link-tile-card-body h6 {
+  line-height: var(--body-line-height);
+}
+
+@media (width >= 480px) {
+  .cards-link-tile > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .cards-link-tile {
+    --cards-link-tile-min-height: 162px;
+  }
+
+  .cards-link-tile.ghost {
+    --cards-link-tile-min-height: 112px;
+  }
+}
+
+@media (width >= 1024px) {
+  .cards-link-tile > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-link-tile.ghost > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

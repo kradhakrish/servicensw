@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.service.nsw.gov.au/transaction/book-a-driver-or-rider-licence-test",
+  "path": "transaction/book-a-driver-or-rider-licence-test",
+  "timestamp": "2026-10-27T04:08:28.536Z",
+  "title": "Book a driver or rider licence test | Service NSW",
+  "template": "services",
+  "blocks": [
+    "table",
+    "table"
+  ]
+}

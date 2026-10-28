@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.service.nsw.gov.au/services/health-and-care",
+  "path": "services/health-and-care",
+  "timestamp": "2026-10-27T04:06:56.255Z",
+  "title": "Health and care | Service NSW",
+  "template": "services",
+  "blocks": [
+    "cards-link-tile",
+    "cards-link-tile"
+  ]
+}

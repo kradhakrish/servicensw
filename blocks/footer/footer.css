@@ -1,20 +1,142 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+/* Service NSW global footer — values measured from www.service.nsw.gov.au (1440px) */
+
+footer .footer {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 24px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer-container {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-gutter);
 }
 
-footer .footer p {
+footer .footer-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+footer .footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer li {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+footer .footer a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* acknowledgement of country */
+footer .footer-ack {
+  padding: 20px 0;
+  background-color: #dee3e5;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+footer .footer-ack h2 {
+  max-width: var(--text-max-width);
+  margin: 0 0 16px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+footer .footer-ack p {
+  margin: 0;
+}
+
+/* link columns */
+footer .footer-main {
+  padding: 40px 0;
+  background-color: #646974;
+  color: #fff;
+}
+
+footer .footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 24px;
+  padding-bottom: 12px;
+}
+
+footer .footer-column h2 {
+  margin: 0;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+footer .footer .footer-links {
+  margin-top: 20px;
+}
+
+footer .footer-links li + li {
+  margin-top: 12px;
+}
+
+footer .footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 36px;
+}
+
+footer .footer-social a:any-link {
+  display: block;
+}
+
+footer .footer-social img {
+  display: block;
+  width: auto;
+  max-width: 32px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* the source shows a flat list instead of the columns on small screens */
+footer .footer-mobile-links {
+  display: none;
+}
+
+/* legal links */
+footer .footer-bottom {
+  padding: 9px 0;
+  background-color: var(--text-color);
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+footer .footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 35px;
+  min-height: 66px;
+}
+
+footer .footer .footer-social a:hover {
+  text-decoration: none;
 }

@@ -1,0 +1,11 @@
+{
+  "variantName": "columns-text-media",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Two equal columns, text beside an illustration or product image, vertically centred; stacks on mobile with the image first",
+  "contentPattern": "One row, two columns: a text column (paragraphs, list, CTA links or linked store badge images) and an image column, in either order.",
+  "options": [],
+  "memberVariantIds": ["columns-text-media"],
+  "usage": "Promotional text next to an illustration or app screenshots, e.g. Business Profile login or app download sections.",
+  "reuseGuidance": "Use for a single text + image pairing. Author the columns in the order they should appear on desktop."
+}

@@ -1,0 +1,116 @@
+/*
+ * Table block, styled from the Service NSW source tables
+ * (table--borders table--line-length table--responsive-onecol [table--striped]).
+ * Mobile (< 480px): rows stack into one column, each cell labelled from its
+ * header (data-label set by table.js). 480px and up: a standard table.
+ */
+.table {
+  width: 100%;
+}
+
+.table .table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table table {
+  width: var(--text-max-width);
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+  color: #22272b;
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+}
+
+.table th,
+.table td {
+  padding: 10px 8px;
+  border: 0;
+  border-bottom: 2px solid #dee3e5;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  background-color: #cdd3d6;
+  font-weight: 700;
+}
+
+.table td {
+  overflow-wrap: break-word;
+}
+
+.table th p,
+.table td p {
+  margin: 0;
+}
+
+.table td ul,
+.table td ol {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.table td p + p,
+.table td p + ul,
+.table td ul + p {
+  margin-top: 0.25em;
+}
+
+/* striped option */
+.table.striped tbody tr:nth-child(odd) td {
+  background-color: #fff;
+}
+
+.table.striped tbody tr:nth-child(even) td {
+  background-color: var(--grey-01);
+}
+
+/* mobile: one column per row, header labels shown above each value */
+@media (width < 480px) {
+  .table:not(.no-header) table,
+  .table:not(.no-header) tbody,
+  .table:not(.no-header) tr,
+  .table:not(.no-header) td {
+    display: block;
+  }
+
+  .table:not(.no-header) thead th {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .table:not(.no-header) td[data-label]::before {
+    content: attr(data-label) / "";
+    display: block;
+    margin: 0 0 10px;
+    font-size: var(--body-font-size-s);
+    font-weight: 700;
+    line-height: 21px;
+  }
+
+  .table:not(.no-header) tbody td:last-child {
+    border-bottom-color: #495054;
+  }
+
+  .table:not(.no-header) tbody tr:first-child td:first-child {
+    border-top: 2px solid #495054;
+  }
+}
+
+@media (width >= 768px) {
+  .table table {
+    table-layout: fixed;
+  }
+
+  .table td {
+    overflow-wrap: normal;
+  }
+}

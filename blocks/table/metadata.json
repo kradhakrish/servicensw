@@ -1,0 +1,14 @@
+{
+  "variantName": "table",
+  "baseBlock": "table",
+  "canonicalModel": "table",
+  "visualCharacteristics": "Data table up to 768px wide with a grey bold header row, 2px row dividers and left-aligned text; optional white/grey striped rows. Below 480px each row stacks into one column with the header text as a bold label above each value.",
+  "contentPattern": "Each block row is a table row and each cell a table cell. The first row is the header row (rendered as th in thead) unless the no-header option is set. Cells may hold inline formatting, links and short lists. Rows with fewer cells stretch their last cell across the remaining columns.",
+  "options": [
+    { "class": "no-header", "label": "No header row" },
+    { "class": "striped", "label": "Striped rows" }
+  ],
+  "memberVariantIds": ["table"],
+  "usage": "Tabular data such as fees, toll relief thresholds and test booking details on Service NSW transaction pages.",
+  "reuseGuidance": "Use for genuine tabular data with column headings. For side-by-side text and media use columns-text-media; for lists of links use cards-link-tile."
+}

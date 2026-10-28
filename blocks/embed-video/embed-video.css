@@ -1,0 +1,88 @@
+/* source .embedded-entity iframe.media-oembed-content: 16:9, max 582px, left aligned */
+.embed-video {
+  width: 100%;
+  max-width: 582px;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* reserve the 16:9 frame while the lazy player waits to load (avoids layout shift) */
+.embed-video:empty {
+  aspect-ratio: 16 / 9;
+}
+
+/*
+ * Source: the inline iframe sits 7px above its transcript accordion.
+ * The block margin gives 7px where wrapper margins are zeroed (split grid);
+ * the wrapper offset turns the flow-spacing gap into 7px elsewhere.
+ */
+.embed-video-wrapper:has(+ .accordion-transcript-wrapper) {
+  margin-bottom: calc(7px - var(--flow-spacing));
+}
+
+.embed-video-wrapper:has(+ .accordion-transcript-wrapper) .embed-video {
+  margin-bottom: 7px;
+}
+
+.embed-video .embed-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.embed-video .embed-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.embed-video .embed-video-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+}
+
+.embed-video .embed-video-placeholder > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+.embed-video .embed-video-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.embed-video .embed-video-placeholder-play button {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(3);
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 2px solid;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 80%);
+  cursor: pointer;
+}
+
+.embed-video .embed-video-placeholder-play button::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 0;
+  height: 10px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid;
+}
