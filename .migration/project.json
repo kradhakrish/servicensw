@@ -2,10 +2,10 @@
   "type": "da",
   "sites": {
     "servicensw": {
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json",
       "previewOrg": "kradhakrish",
       "previewSite": "servicensw",
-      "contentHostUrl": "https://content.da.live/kradhakrish/servicensw/",
-      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+      "contentHostUrl": "https://content.da.live/kradhakrish/servicensw/"
     }
   }
 }
