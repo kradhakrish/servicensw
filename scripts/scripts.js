@@ -79,6 +79,12 @@ function buildWidgetAutoBlocks(main) {
  */
 function buildAutoBlocks(main) {
   try {
+    // Keep existing authored "Forms" blocks compatible with the imported
+    // AEM Forms block, whose canonical block name is singular.
+    main.querySelectorAll('.forms').forEach((block) => {
+      block.classList.replace('forms', 'form');
+    });
+
     // auto load `*/fragments/*` references
     const fragments = [...main.querySelectorAll('a[href*="/fragments/"]')].filter((f) => !f.closest('.fragment'));
     if (fragments.length > 0) {
