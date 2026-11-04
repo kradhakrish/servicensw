@@ -221,7 +221,8 @@ function buildBrand(section) {
       const divider = document.createElement('span');
       divider.className = 'nav-brand-divider';
       divider.setAttribute('aria-hidden', 'true');
-      img.before(divider);
+      const visual = img.closest('picture') || img;
+      visual.before(divider);
     }
     img.alt = '';
     img.loading = 'eager';
@@ -265,8 +266,12 @@ function readUtility(section, header) {
     }
   });
   section.querySelectorAll(':scope > p > a').forEach((a) => {
-    if (a.getAttribute('href').startsWith('#')) {
+    const href = a.getAttribute('href') || '';
+    const isSkipLink = href.startsWith('#')
+      || /^skip to (?:main )?content$/i.test(a.textContent.trim());
+    if (isSkipLink) {
       a.className = 'nav-skip-link';
+      a.setAttribute('href', '#main');
       result.skipLink = a;
     } else {
       a.className = 'nav-utility-link';

@@ -79,8 +79,14 @@ header .nav-main .nav-container {
 
 header .nav-brand a:any-link {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   text-decoration: none;
+}
+
+header .nav-brand picture {
+  display: flex;
+  flex: none;
+  align-items: center;
 }
 
 header .nav-brand img {
@@ -89,7 +95,7 @@ header .nav-brand img {
   height: 32px;
 }
 
-header .nav-brand .nav-brand-divider + img {
+header .nav-brand .nav-brand-divider + picture img {
   height: 26px;
 }
 
@@ -527,7 +533,7 @@ header .nav-dropdown-panel [role="menuitem"]:hover {
     height: 49px;
   }
 
-  header .nav-brand .nav-brand-divider + img {
+  header .nav-brand .nav-brand-divider + picture img {
     height: 42px;
   }
 
