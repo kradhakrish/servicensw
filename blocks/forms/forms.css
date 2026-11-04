@@ -1,0 +1,11 @@
+.forms {
+  width: 100%;
+}
+
+.forms .forms-page {
+  display: block;
+  width: 100%;
+  min-height: max(720px, 100dvh);
+  border: 0;
+  background-color: var(--background-color);
+}
