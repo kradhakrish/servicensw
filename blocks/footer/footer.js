@@ -5,8 +5,8 @@
  */
 async function fetchFooter() {
   // metadata-independent: /content first (localhost), then root (DA/EDS prod)
-  let path = '/content/footer.plain.html';
-  let resp = await fetch('/content/footer.plain.html');
+  let path = '/footer.plain.html';
+  let resp = await fetch('/footer.plain.html');
   if (!resp.ok) {
     path = '/footer.plain.html';
     resp = await fetch('/footer.plain.html');

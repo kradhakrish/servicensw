@@ -8,8 +8,8 @@ const isDesktop = window.matchMedia('(width >= 1024px)');
  */
 async function fetchNav() {
   // metadata-independent: /content first (localhost), then root (DA/EDS prod)
-  let path = '/content/nav.plain.html';
-  let resp = await fetch('/content/nav.plain.html');
+  let path = '/nav.plain.html';
+  let resp = await fetch('/nav.plain.html');
   if (!resp.ok) {
     path = '/nav.plain.html';
     resp = await fetch('/nav.plain.html');
