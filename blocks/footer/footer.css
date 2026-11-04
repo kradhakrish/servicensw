@@ -1,4 +1,7 @@
-/* Service NSW global footer — values measured from www.service.nsw.gov.au (1440px) */
+/*
+ * Service NSW global footer — values measured from www.service.nsw.gov.au
+ * (375px and 1440px). Mobile-first: the source switches to the column layout at 1024px.
+ */
 
 footer .footer {
   font-family: var(--body-font-family);
@@ -65,18 +68,23 @@ footer .footer-ack p {
   margin: 0;
 }
 
-/* link columns */
+/* main band: mobile shows a flat link list, desktop the link columns */
 footer .footer-main {
-  padding: 40px 0;
+  padding: 24px 0;
   background-color: #646974;
   color: #fff;
 }
 
 footer .footer-columns {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 24px;
-  padding-bottom: 12px;
+  display: none;
+}
+
+footer .footer-mobile-links li + li {
+  margin-top: 12px;
+}
+
+footer .footer-mobile-links a[aria-current="page"] {
+  font-weight: 700;
 }
 
 footer .footer-column h2 {
@@ -100,43 +108,84 @@ footer .footer .footer-social {
   display: flex;
   align-items: center;
   gap: 25px;
-  margin-top: 36px;
+  margin-top: 24px;
 }
 
 footer .footer-social a:any-link {
   display: block;
 }
 
-footer .footer-social img {
+footer .footer .footer-social a:hover {
+  text-decoration: none;
+}
+
+footer .footer-icon {
   display: block;
-  width: auto;
-  max-width: 32px;
+  width: 28px;
   height: 28px;
-  object-fit: contain;
+  background: var(--footer-icon) center / contain no-repeat;
 }
 
-/* the source shows a flat list instead of the columns on small screens */
-footer .footer-mobile-links {
-  display: none;
+/* wider icons (e.g. YouTube) keep the source 32px box */
+footer .footer-social li:last-child .footer-icon {
+  width: 32px;
 }
 
-/* legal links */
+/* legal links: stacked on mobile, one row on desktop */
 footer .footer-bottom {
-  padding: 9px 0;
+  padding: 24px 0;
   background-color: var(--text-color);
   color: #fff;
   font-size: 14px;
   line-height: 21px;
 }
 
-footer .footer-legal {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 35px;
-  min-height: 66px;
+footer .footer .footer-legal li {
+  line-height: 24px;
 }
 
-footer .footer .footer-social a:hover {
-  text-decoration: none;
+footer .footer .footer-legal li + li {
+  margin-top: 16px;
+}
+
+/* breakpoint-exception: the source footer switches to its column layout at 1024px */
+@media (width >= 1024px) {
+  footer .footer-main {
+    padding: 40px 0;
+  }
+
+  footer .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+    padding-bottom: 12px;
+  }
+
+  footer .footer-mobile-links {
+    display: none;
+  }
+
+  footer .footer .footer-column .footer-social {
+    margin-top: 36px;
+  }
+
+  footer .footer-bottom {
+    padding: 9px 0;
+  }
+
+  footer .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 35px;
+    min-height: 66px;
+  }
+
+  footer .footer .footer-legal li {
+    line-height: 21px;
+  }
+
+  footer .footer .footer-legal li + li {
+    margin-top: 0;
+  }
 }
